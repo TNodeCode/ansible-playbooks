@@ -69,3 +69,17 @@ $ SRC=<local_path> DST=<remote_path> ansible-playbook playbook-fetch.yml
 # Examples
 SRC=./info.txt DST="\$HOME/info.txt" ansible-playbook -v -b -i inventory.txt -l my_group playbook-fetch.yml
 ```
+
+
+### Shell
+
+Fetch files or directories from multiple remote hosts
+
+```bash
+# Basic command syntax
+$ [DEBUG=1] SRC=<local_path> DST=<remote_path> ansible-playbook playbook-shell.yml
+
+# Examples
+CMD="uname -a" ansible-playbook -v -b -i inventory.txt -l my_group playbook-shell.yml
+DEBUG=1 CMD="apt-get update && apt-get upgrade" ansible-playbook -v -b -i inventory.txt -l my_group playbook-shell.yml
+```

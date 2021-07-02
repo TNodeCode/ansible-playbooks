@@ -1,0 +1,15 @@
+- name: Run shell snippet on remote hosts
+  hosts: all
+  vars:
+    command: "{{ lookup('env', 'CMD') }}"
+    wantDebug: "{{ lookup('env', 'DEBUG') }}"
+    chdir: "{{ lookup('env', 'CHDIR') l default('./', true) }}"
+  tasks:
+    - name: Run shell snippet
+      shell: "{{ command }}"
+      args:
+        chdir: "{{ chdir }}"
+      register: shell_output
+    - name: Debug shell command
+      when: wantDebug 
+      debug: var=shell_output

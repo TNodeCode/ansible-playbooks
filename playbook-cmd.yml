@@ -1,8 +1,8 @@
-- name: Run command on Raspberry Pi
+- name: Run command on remote hosts
   hosts: all
   vars:
     command: "{{ lookup('env', 'CMD') }}"
   tasks:
-    - name: Update
+    - name: Run command
       command: "{{ command }}"
 
