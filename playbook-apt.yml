@@ -1,0 +1,13 @@
+- name: Install APT package on a debian based system
+  hosts: all
+  vars:
+    pkgName: "{{ lookup('env', 'NAME') }}"
+    state: "{{ lookup('env', 'STATE') | default('present', true) }}"
+  tasks:
+    - name: Update
+      apt:
+        name: "{{ pkgName }}"
+        state: "{{ state }}"
+        update_cache: true
+      become: true
+

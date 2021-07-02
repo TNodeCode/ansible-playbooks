@@ -1,0 +1,6 @@
+*.save
+hosts
+*.retry
+*.sh
+*.cfg
+files/
