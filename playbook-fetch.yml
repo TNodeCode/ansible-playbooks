@@ -1,0 +1,13 @@
+- name: Copy files
+  hosts: all
+  vars:
+    src: "{{ lookup('env', 'SRC') }}"
+    dst: "{{ lookup('env', 'DST') }}"
+    remote_src: false
+    
+  tasks:
+    - name: Fetch file or directory from remote host
+      copy:
+        src: "{{ src }}"
+        dest: "{{ dst }}"
+        remote_src: false   # true if the src file or directory is on the remote host
